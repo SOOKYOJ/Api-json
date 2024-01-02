@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 function List(props) {
   return (
@@ -19,9 +20,9 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      .then((json) => setUsers(json));
+    axios.get('https://jsonplaceholder.typicode.com/users').then((Response) => {
+      setUsers(Response.data);
+    });
   }, []);
 
   return (
