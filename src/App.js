@@ -20,9 +20,12 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users').then((Response) => {
-      setUsers(Response.data);
-    });
+    async function jsonData() {
+      const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+      const changeUser = response.data;
+      setUsers(changeUser);
+    }
+    jsonData();
   }, []);
 
   return (
