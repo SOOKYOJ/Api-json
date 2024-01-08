@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     async function jsonData() {
       const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-      const changeUser = response.data;
+      const changeUser = await response.data;
       setUsers(changeUser);
     }
     jsonData();
